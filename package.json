@@ -1,0 +1,26 @@
+{
+  "name": "test-react-hook-form",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bahmutov/test-react-hook-form.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bahmutov/test-react-hook-form/issues"
+  },
+  "homepage": "https://github.com/bahmutov/test-react-hook-form#readme",
+  "devDependencies": {
+    "cypress": "4.5.0",
+    "cypress-react-unit-test": "4.2.2",
+    "react-hook-form": "5.7.2",
+    "react-scripts": "3.4.1"
+  }
+}
