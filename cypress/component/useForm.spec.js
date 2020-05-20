@@ -1,16 +1,13 @@
 /// <reference types="cypress" />
 import React from 'react'
-import { mount } from 'cypress'
+import { mount } from 'cypress-react-unit-test'
 import { useForm } from 'react-hook-form'
 
-function App() {
+function App(props) {
   const { register, handleSubmit, errors } = useForm(); // initialise the hook
-  const onSubmit = (data) => {
-    console.log(data);
-  };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(props.onSubmit)}>
       <input name="firstname" ref={register} /> {/* register an input */}
 
       <input name="lastname" ref={register({ required: true })} />
@@ -26,6 +23,15 @@ function App() {
 
 describe('useForm', () => {
   it('submits a form', () => {
-    mount(<App />)
+    mount(<App onSubmit={cy.stub().as('submit')} />)
+    cy.get('input[name=firstname]').type('gleb')
+    cy.get('input[name=lastname]').type('b')
+    cy.get('input[name=age]').type('10')
+    cy.get('form').submit()
+    cy.get('@submit').should('have.been.calledWith', {
+      firstname: 'gleb',
+      lastname: 'b',
+      age: '10'
+    })
   })
 })
